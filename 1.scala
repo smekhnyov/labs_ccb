@@ -5,7 +5,7 @@ val targetWord = "file"
 val wordCount = rdd.filter(_.toLowerCase.contains(targetWord)).count()
 println(s"Количество вхождений слова '$targetWord' в файле: $wordCount")
 
-val rdd = rdd.flatMap(_.split("\\s+")).filter(_.nonEmpty).collect
+val wordsRDD = rdd.flatMap(_.split("\\s+")).filter(_.nonEmpty).collect
 
 val intArrayRDD = sc.parallelize(Array(1,2,3,4,5))
 val reduceRDD = intArrayRDD.reduce(_+_)
